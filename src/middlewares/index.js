@@ -6,8 +6,7 @@ export const logger = (store) => (next) => (action) => {
 export const featuring = (store) => (next) => (actionInfo) => {
     const featured = [{ name: 'eddie' }, ...actionInfo.action.payload]
     const updatedActionInfo = {
-        ...actionInfo,
-        action:{ ...actionInfo.action, payload: featured }
+        ...actionInfo, payload: featured
     }
     next(updatedActionInfo);
 }
@@ -15,7 +14,7 @@ export const featuring = (store) => (next) => (actionInfo) => {
 export const nameUpperCase = (store) => (next) => (actionInfo) => {
 
     const featured = [
-             ...actionInfo.action.payload.map(
+             ...actionInfo.payload.map(
                 pokemon => ({
                     ...pokemon,
                      name: pokemon.name.charAt(0).toUpperCase() +
@@ -25,11 +24,7 @@ export const nameUpperCase = (store) => (next) => (actionInfo) => {
         ]
     
     const updateActionInfo = {
-            ...actionInfo,
-            action: {
-                ...actionInfo.action,
-                payload: featured
-            }
+            ...actionInfo, payload: featured
         }
         next(updateActionInfo)
     }
