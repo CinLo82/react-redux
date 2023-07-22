@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client'
 import { pokemonsReducer } from './reducers/pokemons.js'
 import { Provider } from 'react-redux'
 import { legacy_createStore as createStore, applyMiddleware, compose } from 'redux'
-import { logger, nameUpperCase } from './middlewares';
+import { logger} from './middlewares';
 import thunk from 'redux-thunk'
 import App from './App.jsx'
 
 const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose
 
 const composedEnhancers = composeAlt(
-  applyMiddleware(thunk, logger, nameUpperCase),
+  applyMiddleware(thunk, logger),
 )
 
 const store = createStore(pokemonsReducer, composedEnhancers)
