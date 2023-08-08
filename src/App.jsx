@@ -6,14 +6,15 @@ import Searcher from './components/Search';
 import PokemonList from './components/PokemonList';
 import { getPokemon } from './api/index';
 import logo from './statics/logo.svg';
+import { get } from 'immutable'
 import './App.css';
 
 
 function App() {
 
 	
-	const pokemons = useSelector((state) => state.pokemons)
-	const loading = useSelector((state) => state.loading)
+	const pokemons = useSelector(state => get(state, 'pokemons'))?.toJS();
+	const loading = useSelector((state) => get(state, 'loading'))
 	const dispatch = useDispatch()
 	
 	useEffect(() => {
