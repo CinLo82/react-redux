@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 import App from './App.jsx'
 import rootReducer from './reducers/rootReducer.js'
 
-const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose
+const composeAlt = compose
 
 const composedEnhancers = composeAlt(
   applyMiddleware(thunk, logger),

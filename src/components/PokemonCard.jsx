@@ -4,6 +4,7 @@ import { Meta } from 'antd/es/list/Item'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux';
 import { setFavorite } from '../slices/dataSlice';
+import './PokemonCard.css'
 
 
 const PokemonCard = ({ name, image, types, id, favorite }) => {
@@ -24,6 +25,7 @@ const PokemonCard = ({ name, image, types, id, favorite }) => {
 
 	return (
 		<Card
+			className='card'
 			title={name}
 			cover={
 				<img
@@ -31,7 +33,10 @@ const PokemonCard = ({ name, image, types, id, favorite }) => {
 				alt={name}
 				/>
 			}
-			extra={<StarButton isFavorite={favorite} onClick={handleOnFavorite}/>}
+			extra={<StarButton 
+				isFavorite={favorite} 
+				onClick={handleOnFavorite}
+			/>}
 		>
 		<Meta description={typesString}
 		/>

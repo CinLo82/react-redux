@@ -9,7 +9,7 @@ import { fetchPokemonsWithDetails } from './slices/dataSlice';
 
 
 function App() {
-	const pokemons = useSelector((state) => state.data.pokemons, shallowEqual)
+	const state = useSelector((state) => state.data, shallowEqual)
 	const loading = useSelector((state) => state.ui.loading)
 	const dispatch = useDispatch()
 	
@@ -20,6 +20,7 @@ function App() {
 	return (
 		<div className='App'>
 			<Col span={4} offset={10}>
+				
 				<img src={logo} alt='Pokedux' />
 			</Col>
 			<Col span={8} offset={8}>
@@ -29,7 +30,7 @@ function App() {
 				<Col offset={12}>
 					<Spin spinning size='large'/>
 				</Col>) : (
-					<PokemonList pokemons={pokemons} />
+					<PokemonList pokemons={state.isSearch? state.searchPokemons : state.pokemons} />
 				)
 			}
 		</div>
